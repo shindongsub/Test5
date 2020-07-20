@@ -14,6 +14,18 @@ public class Test {
 //		String store = null; // "" -> 없는 데이터, null
 
 		int id = 1;
+		Article article1 = new Article();
+		article1.id = 1;
+		article1.title = "테스트 데이터 제목1";
+		article1.body = "테스트 데이터 내용11";
+		
+		article1.regDate = Util.getCurrentDate();
+		Article article2 = new Article(2, "제목2", "내용2", Util.getCurrentDate());
+		Article article3 = new Article(3, "제목3", "내용3", Util.getCurrentDate());
+		
+		articles.add(article1);
+		articles.add(article2);
+		articles.add(article3);
 
 		while (true) {
 
@@ -60,8 +72,12 @@ public class Test {
 				for (int i = 0; i < articles.size(); i++) {
 					System.out.println("번호 : " + articles.get(i).id);
 					System.out.println("제목 : " + articles.get(i).title);
-					System.out.println("작성일 : " + articles.get(i).regDate);
+//					System.out.println("작성일 : " + articles.get(i).regDate);
 					// System.out.println("내용 : " + bodies.get(i) + "\n");
+					
+					String str = articles.get(i).regDate;   // 날짜자르기
+					String[] arr = str.split(" ");
+					System.out.println("작성일 : " + arr[0]);
 				}
 			}
 			if (cmd.equals("update")) {
@@ -120,7 +136,18 @@ class Article {  //Article 저장소입니다.
 	String title;
 	String body;
 	String regDate;
+	
+	Article(){
+		
+	}
+	Article(int id, String title, String body, String regDate){
+		this.id = id;
+		this.title = title;
+		this.body = body;
+		this.regDate = regDate;
+	}
 }
+
 
 
 //public int a; // 외부의 모든 객체가 접근가능
