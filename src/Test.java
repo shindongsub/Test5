@@ -115,7 +115,7 @@ public class Test {
 }
 
 // DataClass, DTO
-class Article {
+class Article {  //Article 저장소입니다.
 	int id;
 	String title;
 	String body;
